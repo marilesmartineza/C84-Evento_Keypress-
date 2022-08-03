@@ -4,49 +4,40 @@ ctx = canvas.getContext("2d");// Crea una referencia para el elemento canvas
 img_width = 300;
 img_height = 100;
 
+borrar_width = 300;
+borrar_height = 100;
+
 var img_image;
+var borrar_image;
 
 img_x = 100;
 img_y = 100;
-//rover_image = "rover.png";
-Alpkey_image = "Alpkey.png";
-Arrkey_image = "Arrkey.png";
-numkey_image = "numkey.png";
-otherkey_image = "otherkey.png";
-spkey_image = "spkey.png";
+
+borrar_x = 100;
+borrar_y = 100;
+
 function add() {
 	img_imgTag = new Image(); //define una variable para una imagen nueva
 	img_imgTag.onload = uploadimg; // establece una función para cargar la variable
 	img_imgTag.src = img_image;   // carga la imagen
 
-	img_imgTag = new Image(); //define una variable para una imagen nueva
-	img_imgTag.onload = uploadimg; // establece una función para cargar la variable
-	img_imgTag.src = Alpkey_image;   // carga la imagen
-
-	img_imgTag = new Image(); //define una variable para una imagen nueva
-	img_imgTag.onload = uploadimg; // establece una función para cargar la variable
-	img_imgTag.src = Arrkey_image;   // carga la imagen
-
-	img_imgTag = new Image(); //define una variable para una imagen nueva
-	img_imgTag.onload = uploadimg; // establece una función para cargar la variable
-	img_imgTag.src = numkey_image;   // carga la imagen
-
-	img_imgTag = new Image(); //define una variable para una imagen nueva
-	img_imgTag.onload = uploadimg; // establece una función para cargar la variable
-	img_imgTag.src = otherkey_image;   // carga la imagen
-
-	img_imgTag = new Image(); //define una variable para una imagen nueva
-	img_imgTag.onload = uploadimg; // establece una función para cargar la variable
-	img_imgTag.src = spkey_image;   // carga la imagen
+	borrar_imgTag = new Image(); //define una variable para una imagen nueva
+	borrar_imgTag.onload = uploadborrar; // establece una función para cargar la variable
+	borrar_imgTag.src = borrar_image;   // carga la imagen
 }
 
 function uploadimg() {
 
 	ctx.drawImage(img_imgTag, img_x, img_y, img_width, img_height);
 }
+function uploadborrar() {
+
+	ctx.drawImage(borrar_imgTag, borrar_x, borrar_y, borrar_width, borrar_height);
+}
 
 //Escribe el código para obtener el evento key-pressed
 window.addEventListener("keydown", my_keydown);
+
 function my_keydown(e)
 {
 	keyPressed = e.keyCode;
@@ -58,28 +49,32 @@ function my_keydown(e)
 			aplhabetkey();
 			document.getElementById("d1").innerHTML="Presionaste una letra del alfabeto";
 			console.log("alphabet key");
+			
 		}
 	    else {
-		otherkey();
-		document.getElementById("d1").innerHTML="Presionaste un simbolo o otra tecla";
+			otherkey();
+			document.getElementById("d1").innerHTML="Presionaste un simbolo u otra tecla";
 	}
 	if(keyPressed >=48 && keyPressed<=57)
 	{
 		numberkey();
 		document.getElementById("d1").innerHTML="Presionaste un número";
 		console.log("number key");
+		
 	}
 	if(keyPressed >=37 && keyPressed<=40)
 	{
 		arrowkey();
 		document.getElementById("d1").innerHTML="Presionaste una flecha";
 		console.log("arrow key");
+
 	}
 	if((keyPressed==17)||(keyPressed==18)||(keyPressed==27))
 	{
 		specialkey();
 		document.getElementById("d1").innerHTML="Presionaste una tecla especial";
-		console.log("number key");
+		console.log("special key");
+		borrar();
 	}
 }
 
@@ -107,5 +102,10 @@ function specialkey()
 function otherkey()
 {
 	img_image="otherkey.png";
+	add();
+}
+function borrar()
+{ 
+	borrar_image="Blanco.png";
 	add();
 }
