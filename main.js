@@ -20,7 +20,8 @@ function add() {
 	img_imgTag = new Image(); //define una variable para una imagen nueva
 	img_imgTag.onload = uploadimg; // establece una función para cargar la variable
 	img_imgTag.src = img_image;   // carga la imagen
-
+}
+function add_2(){
 	borrar_imgTag = new Image(); //define una variable para una imagen nueva
 	borrar_imgTag.onload = uploadborrar; // establece una función para cargar la variable
 	borrar_imgTag.src = borrar_image;   // carga la imagen
@@ -46,17 +47,20 @@ function my_keydown(e)
 		if((keyPressed >=97 && keyPressed<=122)|| (keyPressed >=65 && keyPressed<=90))
 		//Escribe el código para verificar el tipo de tecla que se presionó
 		{
+			borrar();
 			aplhabetkey();
 			document.getElementById("d1").innerHTML="Presionaste una letra del alfabeto";
 			console.log("alphabet key");
 			
 		}
 	    else {
+			borrar();
 			otherkey();
 			document.getElementById("d1").innerHTML="Presionaste un simbolo u otra tecla";
 	}
 	if(keyPressed >=48 && keyPressed<=57)
 	{
+		borrar();
 		numberkey();
 		document.getElementById("d1").innerHTML="Presionaste un número";
 		console.log("number key");
@@ -64,6 +68,7 @@ function my_keydown(e)
 	}
 	if(keyPressed >=37 && keyPressed<=40)
 	{
+		borrar();
 		arrowkey();
 		document.getElementById("d1").innerHTML="Presionaste una flecha";
 		console.log("arrow key");
@@ -71,10 +76,11 @@ function my_keydown(e)
 	}
 	if((keyPressed==17)||(keyPressed==18)||(keyPressed==27))
 	{
+		borrar();
 		specialkey();
 		document.getElementById("d1").innerHTML="Presionaste una tecla especial";
 		console.log("special key");
-		borrar();
+
 	}
 }
 
@@ -107,5 +113,5 @@ function otherkey()
 function borrar()
 { 
 	borrar_image="Blanco.png";
-	add();
+	add_2();
 }
